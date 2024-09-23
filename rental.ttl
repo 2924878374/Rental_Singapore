@@ -1,0 +1,4447 @@
+@prefix : <http://wkwsci.ntu.edu.sg/CZTLZW/rental#/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prop: <http://wkwsci.ntu.edu.sg/chriskhoo/propertySG#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rental: <http://wkwsci.ntu.edu.sg/KM6307/ck/rental#> .
+@base <http://wkwsci.ntu.edu.sg/CZTLZW/rental#/> .
+
+<http://wkwsci.ntu.edu.sg/CZTLZW/rental#> rdf:type owl:Ontology ;
+                                           owl:versionIRI <http://wkwsci.ntu.edu.sg/CZTLZW/rental/v1.0.0> ;
+                                           owl:imports <http://wkwsci.ntu.edu.sg/chriskhoo/propertySG> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/label_cn
+:label_cn rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+rdf:type rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#closest_MRT
+:closest_MRT rdf:type owl:ObjectProperty ;
+             rdfs:domain :Building ,
+                         :Rental_unit ,
+                         prop:Property_unit ;
+             rdfs:range :MRT_station .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/floorSize
+:floorSize rdf:type owl:ObjectProperty ;
+           rdfs:domain :Rental_unit ,
+                       prop:Property_unit ;
+           rdfs:range :Unit_Value ;
+           rdfs:label "floor_size" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/part_of
+:part_of rdf:type owl:ObjectProperty ;
+         rdfs:domain :Rental_unit ,
+                     prop:Property_unit ;
+         rdfs:range :Building ,
+                    prop:Property_unit ;
+         rdfs:label "part_of" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/property_unit
+:property_unit rdf:type owl:ObjectProperty ;
+               rdfs:domain :Listing ;
+               rdfs:range prop:Property_unit .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/rental_unit
+:rental_unit rdf:type owl:ObjectProperty ;
+             rdfs:domain :Listing ;
+             rdfs:range :Rental_unit ;
+             rdfs:label "rental_unit" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/unit
+:unit rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf owl:topObjectProperty ;
+      rdfs:range :UnitOfMeasure .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/address
+:address rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Rental_unit ,
+                     prop:Property_unit ;
+         rdfs:range xsd:string .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/pet_friendly
+:pet_friendly rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Rental_unit ,
+                          prop:Property_unit ;
+              rdfs:range xsd:string .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/postcode
+:postcode rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Rental_unit ,
+                      prop:Property_unit ;
+          rdfs:range xsd:string .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/rental_monthly
+:rental_monthly rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Rental_unit ,
+                            prop:Property_unit ;
+                rdfs:range xsd:string .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/value
+:value rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Unit_Value ;
+       rdfs:range xsd:decimal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Building
+:Building rdf:type owl:Class ;
+          rdfs:label "Building" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Common_room
+:Common_room rdf:type owl:Class ;
+             rdfs:subClassOf :Room-for-rent .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Condominium_building
+:Condominium_building rdf:type owl:Class ;
+                      rdfs:subClassOf :Building .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/HDB_block
+:HDB_block rdf:type owl:Class ;
+           rdfs:subClassOf :Building .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Listing
+:Listing rdf:type owl:Class ;
+         rdfs:label "Listing" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/MRT_station
+:MRT_station rdf:type owl:Class ;
+             rdfs:label "MRT_station" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Master_bedroom
+:Master_bedroom rdf:type owl:Class ;
+                rdfs:subClassOf :Room-for-rent .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Rental_unit
+:Rental_unit rdf:type owl:Class ;
+             rdfs:label "Rental_unit" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Room-for-rent
+:Room-for-rent rdf:type owl:Class ;
+               rdfs:subClassOf :Rental_unit .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/UnitOfMeasure
+:UnitOfMeasure rdf:type owl:Class .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Unit_Value
+:Unit_Value rdf:type owl:Class ;
+            rdfs:label "Unit_Value" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Whole_property_for_rent
+:Whole_property_for_rent rdf:type owl:Class ;
+                         rdfs:subClassOf :Rental_unit .
+
+
+###  http://wkwsci.ntu.edu.sg/KM6307/ck/rental#Master_bedroom
+rental:Master_bedroom rdf:type owl:Class .
+
+
+###  http://wkwsci.ntu.edu.sg/chriskhoo/propertySG#Property_unit
+prop:Property_unit owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty :part_of ;
+                                         owl:allValuesFrom :Building
+                                       ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk271A_JURONG_WEST_ST_24
+:Blk271A_JURONG_WEST_ST_24 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk271B_JURONG_WEST_ST_24
+:Blk271B_JURONG_WEST_ST_24 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk271C_JURONG_WEST_ST_24
+:Blk271C_JURONG_WEST_ST_24 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk271D_JURONG_WEST_ST_24
+:Blk271D_JURONG_WEST_ST_24 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk271_JURONG_WEST_ST_24
+:Blk271_JURONG_WEST_ST_24 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk271_JURONG_WEST_ST_24_Apt04-55
+:Blk271_JURONG_WEST_ST_24_Apt04-55 rdf:type owl:NamedIndividual ,
+                                            prop:HDB_5S_flat ;
+                                   :closest_MRT :EW27 ;
+                                   :part_of :Blk271_JURONG_WEST_ST_24 .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk272A_JURONG_WEST_ST_24
+:Blk272A_JURONG_WEST_ST_24 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk272B_JURONG_WEST_ST_24
+:Blk272B_JURONG_WEST_ST_24 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk272C_JURONG_WEST_ST_24
+:Blk272C_JURONG_WEST_ST_24 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk272D_JURONG_WEST_ST_24
+:Blk272D_JURONG_WEST_ST_24 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk272_JURONG_WEST_ST_24
+:Blk272_JURONG_WEST_ST_24 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk273A_JURONG_WEST_AVE_3
+:Blk273A_JURONG_WEST_AVE_3 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk273B_JURONG_WEST_AVE_3
+:Blk273B_JURONG_WEST_AVE_3 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk273C_JURONG_WEST_AVE_3
+:Blk273C_JURONG_WEST_AVE_3 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk273D_JURONG_WEST_AVE_3
+:Blk273D_JURONG_WEST_AVE_3 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk273_JURONG_WEST_AVE_3
+:Blk273_JURONG_WEST_AVE_3 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk274A_JURONG_WEST_AVE_3
+:Blk274A_JURONG_WEST_AVE_3 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk274B_JURONG_WEST_ST_25
+:Blk274B_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk274C_JURONG_WEST_ST_25
+:Blk274C_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk274D_JURONG_WEST_AVE_3
+:Blk274D_JURONG_WEST_AVE_3 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk274_JURONG_WEST_ST_25
+:Blk274_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk275A_JURONG_WEST_ST_25
+:Blk275A_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk275B_JURONG_WEST_ST_25
+:Blk275B_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk275C_JURONG_WEST_ST_25
+:Blk275C_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk275D_JURONG_WEST_ST_25
+:Blk275D_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk275_JURONG_WEST_ST_25
+:Blk275_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk276A_JURONG_WEST_ST_25
+:Blk276A_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk276B_JURONG_WEST_AVE_3
+:Blk276B_JURONG_WEST_AVE_3 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk276C_JURONG_WEST_ST_25
+:Blk276C_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk276D_JURONG_WEST_ST_25
+:Blk276D_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk276_JURONG_WEST_ST_25
+:Blk276_JURONG_WEST_ST_25 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk401_JURONG_WEST_ST_42
+:Blk401_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk402_JURONG_WEST_ST_42
+:Blk402_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk403_JURONG_WEST_ST_42
+:Blk403_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk404_JURONG_WEST_ST_42
+:Blk404_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk405_JURONG_WEST_ST_42
+:Blk405_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk406_JURONG_WEST_ST_42
+:Blk406_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk407_JURONG_WEST_ST_42
+:Blk407_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk408_JURONG_WEST_ST_42
+:Blk408_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk409_JURONG_WEST_ST_42
+:Blk409_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk410_JURONG_WEST_ST_42
+:Blk410_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk411_JURONG_WEST_ST_42
+:Blk411_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk412_JURONG_WEST_ST_42
+:Blk412_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk413_JURONG_WEST_ST_42
+:Blk413_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk414_JURONG_WEST_ST_42
+:Blk414_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk415_JURONG_WEST_ST_42
+:Blk415_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk416_JURONG_WEST_ST_42
+:Blk416_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk417_JURONG_WEST_ST_42
+:Blk417_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk418_JURONG_WEST_ST_42
+:Blk418_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk419_JURONG_WEST_ST_42
+:Blk419_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk420_JURONG_WEST_ST_42
+:Blk420_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk421_JURONG_WEST_ST_42
+:Blk421_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk422_JURONG_WEST_ST_42
+:Blk422_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk423_JURONG_WEST_AVE_1
+:Blk423_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk423_JURONG_WEST_AVE_1_Apt03-11
+:Blk423_JURONG_WEST_AVE_1_Apt03-11 rdf:type owl:NamedIndividual ,
+                                            prop:HDB_4STD_flat ;
+                                   :closest_MRT :EW26 ;
+                                   :part_of :Blk423_JURONG_WEST_AVE_1 .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk424_JURONG_WEST_AVE_1
+:Blk424_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk425_JURONG_WEST_AVE_1
+:Blk425_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk426_JURONG_WEST_AVE_1
+:Blk426_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk427_JURONG_WEST_AVE_1
+:Blk427_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk428_JURONG_WEST_AVE_1
+:Blk428_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk429_JURONG_WEST_AVE_1
+:Blk429_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk430_JURONG_WEST_AVE_1
+:Blk430_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk431_JURONG_WEST_AVE_1
+:Blk431_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk432_JURONG_WEST_ST_42
+:Blk432_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk433_JURONG_WEST_ST_42
+:Blk433_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk434_JURONG_WEST_ST_42
+:Blk434_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk435_JURONG_WEST_ST_42
+:Blk435_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk436_JURONG_WEST_AVE_1
+:Blk436_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk437_JURONG_WEST_AVE_1
+:Blk437_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk438_JURONG_WEST_AVE_1
+:Blk438_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk439_JURONG_WEST_AVE_1
+:Blk439_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk440_JURONG_WEST_AVE_1
+:Blk440_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk441_JURONG_WEST_AVE_1
+:Blk441_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk442_JURONG_WEST_AVE_1
+:Blk442_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk443_JURONG_WEST_AVE_1
+:Blk443_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk444_JURONG_WEST_AVE_1
+:Blk444_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk445_JURONG_WEST_ST_42
+:Blk445_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk446_JURONG_WEST_ST_42
+:Blk446_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk447_JURONG_WEST_ST_42
+:Blk447_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk448_JURONG_WEST_ST_42
+:Blk448_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk449_JURONG_WEST_ST_42
+:Blk449_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk450_JURONG_WEST_ST_42
+:Blk450_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk451_JURONG_WEST_ST_42
+:Blk451_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk452_JURONG_WEST_ST_42
+:Blk452_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk453_JURONG_WEST_ST_42
+:Blk453_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk454_JURONG_WEST_ST_42
+:Blk454_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk455_JURONG_WEST_ST_42
+:Blk455_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk456_JURONG_WEST_ST_41
+:Blk456_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk457_JURONG_WEST_ST_41
+:Blk457_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk458_JURONG_WEST_ST_41
+:Blk458_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk459_JURONG_WEST_ST_41
+:Blk459_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk460_JURONG_WEST_ST_41
+:Blk460_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk461_JURONG_WEST_ST_41
+:Blk461_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk462_JURONG_WEST_ST_41
+:Blk462_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk463_JURONG_WEST_ST_41
+:Blk463_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk464_JURONG_WEST_ST_41
+:Blk464_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk465_JURONG_WEST_ST_41
+:Blk465_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk466_JURONG_WEST_ST_41
+:Blk466_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk467_JURONG_WEST_ST_41
+:Blk467_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk468_JURONG_WEST_ST_41
+:Blk468_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk469_JURONG_WEST_ST_41
+:Blk469_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk470_JURONG_WEST_ST_41
+:Blk470_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk471_JURONG_WEST_ST_41
+:Blk471_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk472_JURONG_WEST_ST_41
+:Blk472_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk473_JURONG_WEST_ST_41
+:Blk473_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk474_JURONG_WEST_ST_41
+:Blk474_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk475_JURONG_WEST_ST_41
+:Blk475_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk476_JURONG_WEST_ST_41
+:Blk476_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk477_JURONG_WEST_ST_41
+:Blk477_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk478_JURONG_WEST_ST_41
+:Blk478_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk479_JURONG_WEST_ST_41
+:Blk479_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk480_JURONG_WEST_ST_41
+:Blk480_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk481_JURONG_WEST_ST_41
+:Blk481_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk482_JURONG_WEST_ST_41
+:Blk482_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk483_JURONG_WEST_ST_41
+:Blk483_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk484_JURONG_WEST_AVE_1
+:Blk484_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk485_JURONG_WEST_AVE_1
+:Blk485_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk486_JURONG_WEST_AVE_1
+:Blk486_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk487_JURONG_WEST_AVE_1
+:Blk487_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk488_JURONG_WEST_AVE_1
+:Blk488_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk489_JURONG_WEST_AVE_1
+:Blk489_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk490_JURONG_WEST_AVE_1
+:Blk490_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk491_JURONG_WEST_AVE_1
+:Blk491_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk492_JURONG_WEST_ST_41
+:Blk492_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk493_JURONG_WEST_ST_41
+:Blk493_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk494A_JURONG_WEST_ST_41
+:Blk494A_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk494_JURONG_WEST_ST_41
+:Blk494_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk495_JURONG_WEST_ST_41
+:Blk495_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk496_JURONG_WEST_ST_41
+:Blk496_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk497_JURONG_WEST_ST_41
+:Blk497_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk498_JURONG_WEST_ST_41
+:Blk498_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk499_JURONG_WEST_ST_41
+:Blk499_JURONG_WEST_ST_41 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk501_JURONG_WEST_ST_51
+:Blk501_JURONG_WEST_ST_51 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk502_JURONG_WEST_AVE_1
+:Blk502_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk503_JURONG_WEST_AVE_1
+:Blk503_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk504_JURONG_WEST_ST_51
+:Blk504_JURONG_WEST_ST_51 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk505A_JURONG_WEST_ST_52
+:Blk505A_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk505_JURONG_WEST_ST_52
+:Blk505_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk506_JURONG_WEST_ST_52
+:Blk506_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk507_JURONG_WEST_ST_52
+:Blk507_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk508_JURONG_WEST_ST_52
+:Blk508_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk509_JURONG_WEST_ST_51
+:Blk509_JURONG_WEST_ST_51 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk510_JURONG_WEST_ST_52
+:Blk510_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk511_JURONG_WEST_ST_52
+:Blk511_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk513_JURONG_WEST_ST_52
+:Blk513_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk514_JURONG_WEST_ST_52
+:Blk514_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk515_JURONG_WEST_ST_52
+:Blk515_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk516_JURONG_WEST_ST_52
+:Blk516_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk517A_JURONG_WEST_ST_52
+:Blk517A_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk517B_JURONG_WEST_ST_52
+:Blk517B_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk517C_JURONG_WEST_ST_52
+:Blk517C_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk517D_JURONG_WEST_ST_52
+:Blk517D_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk517E_JURONG_WEST_ST_52
+:Blk517E_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk517F_JURONG_WEST_ST_52
+:Blk517F_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk517_JURONG_WEST_ST_52
+:Blk517_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk518A_JURONG_WEST_ST_52
+:Blk518A_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk518_JURONG_WEST_ST_52
+:Blk518_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk519_JURONG_WEST_ST_52
+:Blk519_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk520_JURONG_WEST_ST_52
+:Blk520_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk521_JURONG_WEST_ST_52
+:Blk521_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk522_JURONG_WEST_ST_52
+:Blk522_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk523_JURONG_WEST_ST_52
+:Blk523_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk524_JURONG_WEST_ST_52
+:Blk524_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk525_JURONG_WEST_ST_52
+:Blk525_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk526_JURONG_WEST_ST_52
+:Blk526_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk527_JURONG_WEST_ST_52
+:Blk527_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk528_JURONG_WEST_ST_52
+:Blk528_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk529_JURONG_WEST_ST_52
+:Blk529_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk530A_JURONG_WEST_AVE_1
+:Blk530A_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk530_JURONG_WEST_ST_52
+:Blk530_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk531_JURONG_WEST_ST_52
+:Blk531_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk532_JURONG_WEST_ST_52
+:Blk532_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk533_JURONG_WEST_ST_52
+:Blk533_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk534_JURONG_WEST_ST_52
+:Blk534_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk535_JURONG_WEST_ST_52
+:Blk535_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk536_JURONG_WEST_ST_52
+:Blk536_JURONG_WEST_ST_52 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk537_JURONG_WEST_AVE_1
+:Blk537_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk538_JURONG_WEST_AVE_1
+:Blk538_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk539_JURONG_WEST_AVE_1
+:Blk539_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk540_JURONG_WEST_AVE_1
+:Blk540_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk541_JURONG_WEST_AVE_1
+:Blk541_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk542_JURONG_WEST_AVE_1
+:Blk542_JURONG_WEST_AVE_1 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk543_JURONG_WEST_ST_42
+:Blk543_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk544_JURONG_WEST_ST_42
+:Blk544_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk545_JURONG_WEST_ST_42
+:Blk545_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk546_JURONG_WEST_ST_42
+:Blk546_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk547_JURONG_WEST_ST_42
+:Blk547_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk548_JURONG_WEST_ST_42
+:Blk548_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk549_JURONG_WEST_ST_42
+:Blk549_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk550_JURONG_WEST_ST_42
+:Blk550_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk551_JURONG_WEST_ST_42
+:Blk551_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk552_JURONG_WEST_ST_42
+:Blk552_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk553_JURONG_WEST_ST_42
+:Blk553_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk554_JURONG_WEST_ST_42
+:Blk554_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk555_JURONG_WEST_ST_42
+:Blk555_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk556_JURONG_WEST_ST_42
+:Blk556_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk557_JURONG_WEST_ST_42
+:Blk557_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk558_JURONG_WEST_ST_42
+:Blk558_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk559_JURONG_WEST_ST_42
+:Blk559_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk560A_JURONG_WEST_ST_42
+:Blk560A_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk560_JURONG_WEST_ST_42
+:Blk560_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk561A_JURONG_WEST_ST_42
+:Blk561A_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk561B_JURONG_WEST_ST_42
+:Blk561B_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk561_JURONG_WEST_ST_42
+:Blk561_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk562_JURONG_WEST_ST_42
+:Blk562_JURONG_WEST_ST_42 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk601A_JURONG_WEST_ST_62
+:Blk601A_JURONG_WEST_ST_62 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk601_JURONG_WEST_ST_62
+:Blk601_JURONG_WEST_ST_62 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk602_JURONG_WEST_ST_62
+:Blk602_JURONG_WEST_ST_62 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk603_JURONG_WEST_ST_62
+:Blk603_JURONG_WEST_ST_62 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk604_JURONG_WEST_ST_62
+:Blk604_JURONG_WEST_ST_62 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk605_JURONG_WEST_ST_62
+:Blk605_JURONG_WEST_ST_62 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk606_JURONG_WEST_ST_65
+:Blk606_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk607A_JURONG_WEST_ST_65
+:Blk607A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk607_JURONG_WEST_ST_65
+:Blk607_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk608_JURONG_WEST_ST_65
+:Blk608_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk609_JURONG_WEST_ST_65
+:Blk609_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk610_JURONG_WEST_ST_65
+:Blk610_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk611_JURONG_WEST_ST_65
+:Blk611_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk612_JURONG_WEST_ST_65
+:Blk612_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk613A_JURONG_WEST_ST_62
+:Blk613A_JURONG_WEST_ST_62 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk613_JURONG_WEST_ST_62
+:Blk613_JURONG_WEST_ST_62 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk617A_JURONG_WEST_ST_65
+:Blk617A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk617_JURONG_WEST_ST_65
+:Blk617_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk618_JURONG_WEST_ST_65
+:Blk618_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk619_JURONG_WEST_ST_65
+:Blk619_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk620_JURONG_WEST_ST_65
+:Blk620_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk621_JURONG_WEST_ST_65
+:Blk621_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk622_JURONG_WEST_ST_61
+:Blk622_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk623_JURONG_WEST_ST_61
+:Blk623_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk624A_JURONG_WEST_ST_61
+:Blk624A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk624B_JURONG_WEST_ST_61
+:Blk624B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk624_JURONG_WEST_ST_61
+:Blk624_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk625_JURONG_WEST_ST_61
+:Blk625_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk626_JURONG_WEST_ST_65
+:Blk626_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk627A_JURONG_WEST_ST_65
+:Blk627A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk627_JURONG_WEST_ST_65
+:Blk627_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk628_JURONG_WEST_ST_65
+:Blk628_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk629A_JURONG_WEST_ST_65
+:Blk629A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk629_JURONG_WEST_ST_65
+:Blk629_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk630_JURONG_WEST_ST_65
+:Blk630_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk631A_JURONG_WEST_ST_65
+:Blk631A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk631_JURONG_WEST_ST_65
+:Blk631_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk632_JURONG_WEST_ST_65
+:Blk632_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk633_JURONG_WEST_ST_65
+:Blk633_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk634_JURONG_WEST_ST_65
+:Blk634_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk635A_JURONG_WEST_ST_65
+:Blk635A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk635_JURONG_WEST_ST_65
+:Blk635_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk636_JURONG_WEST_ST_65
+:Blk636_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk637_JURONG_WEST_ST_61
+:Blk637_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk638A_JURONG_WEST_ST_61
+:Blk638A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk638_JURONG_WEST_ST_61
+:Blk638_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk639_JURONG_WEST_ST_61
+:Blk639_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk640A_JURONG_WEST_ST_61
+:Blk640A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk640B_JURONG_WEST_ST_61
+:Blk640B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk640_JURONG_WEST_ST_61
+:Blk640_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk641_JURONG_WEST_ST_61
+:Blk641_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk642_JURONG_WEST_ST_61
+:Blk642_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk643_JURONG_WEST_ST_61
+:Blk643_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk644_JURONG_WEST_ST_61
+:Blk644_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk645_JURONG_WEST_ST_61
+:Blk645_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk646_JURONG_WEST_ST_61
+:Blk646_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk647A_JURONG_WEST_ST_61
+:Blk647A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk647B_JURONG_WEST_ST_61
+:Blk647B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk647_JURONG_WEST_ST_61
+:Blk647_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk648A_JURONG_WEST_ST_61
+:Blk648A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk648B_JURONG_WEST_ST_61
+:Blk648B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk648C_JURONG_WEST_ST_61
+:Blk648C_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk648D_JURONG_WEST_ST_61
+:Blk648D_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk648_JURONG_WEST_ST_61
+:Blk648_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk649A_JURONG_WEST_ST_61
+:Blk649A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk649B_JURONG_WEST_ST_61
+:Blk649B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk649_JURONG_WEST_ST_61
+:Blk649_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk650A_JURONG_WEST_ST_61
+:Blk650A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk650B_JURONG_WEST_ST_61
+:Blk650B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk650C_JURONG_WEST_ST_61
+:Blk650C_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk650_JURONG_WEST_ST_61
+:Blk650_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk651A_JURONG_WEST_ST_61
+:Blk651A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk651B_JURONG_WEST_ST_61
+:Blk651B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk651_JURONG_WEST_ST_61
+:Blk651_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk652A_JURONG_WEST_ST_61
+:Blk652A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk652B_JURONG_WEST_ST_61
+:Blk652B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk652C_JURONG_WEST_ST_61
+:Blk652C_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk652_JURONG_WEST_ST_61
+:Blk652_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk653A_JURONG_WEST_ST_61
+:Blk653A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk653B_JURONG_WEST_ST_61
+:Blk653B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk653C_JURONG_WEST_ST_61
+:Blk653C_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk654A_JURONG_WEST_ST_61
+:Blk654A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk654B_JURONG_WEST_ST_61
+:Blk654B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk654C_JURONG_WEST_ST_61
+:Blk654C_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk655A_JURONG_WEST_ST_61
+:Blk655A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk655B_JURONG_WEST_ST_61
+:Blk655B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk655_JURONG_WEST_ST_61
+:Blk655_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk656A_JURONG_WEST_ST_61
+:Blk656A_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk656B_JURONG_WEST_ST_61
+:Blk656B_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk656C_JURONG_WEST_ST_61
+:Blk656C_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk656D_JURONG_WEST_ST_61
+:Blk656D_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk656_JURONG_WEST_ST_61
+:Blk656_JURONG_WEST_ST_61 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk657A_JURONG_WEST_ST_65
+:Blk657A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk657B_JURONG_WEST_ST_65
+:Blk657B_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk657_JURONG_WEST_ST_65
+:Blk657_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk658A_JURONG_WEST_ST_65
+:Blk658A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk658B_JURONG_WEST_ST_65
+:Blk658B_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk658C_JURONG_WEST_ST_65
+:Blk658C_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk658D_JURONG_WEST_ST_65
+:Blk658D_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk658_JURONG_WEST_ST_65
+:Blk658_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk659A_JURONG_WEST_ST_65
+:Blk659A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk659B_JURONG_WEST_ST_65
+:Blk659B_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk659C_JURONG_WEST_ST_65
+:Blk659C_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk659D_JURONG_WEST_ST_65
+:Blk659D_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk659_JURONG_WEST_ST_65
+:Blk659_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk660A_JURONG_WEST_ST_64
+:Blk660A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk660B_JURONG_WEST_ST_64
+:Blk660B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk660C_JURONG_WEST_ST_64
+:Blk660C_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk660D_JURONG_WEST_ST_64
+:Blk660D_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk660E_JURONG_WEST_ST_64
+:Blk660E_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk660_JURONG_WEST_ST_64
+:Blk660_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk661A_JURONG_WEST_ST_64
+:Blk661A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk661B_JURONG_WEST_ST_64
+:Blk661B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk661C_JURONG_WEST_ST_64
+:Blk661C_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk661D_JURONG_WEST_ST_64
+:Blk661D_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk661_JURONG_WEST_ST_64
+:Blk661_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk662A_JURONG_WEST_ST_64
+:Blk662A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk662B_JURONG_WEST_ST_64
+:Blk662B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk662C_JURONG_WEST_ST_64
+:Blk662C_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk662D_JURONG_WEST_ST_64
+:Blk662D_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk662_JURONG_WEST_ST_64
+:Blk662_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk663A_JURONG_WEST_ST_65
+:Blk663A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk663B_JURONG_WEST_ST_65
+:Blk663B_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk663C_JURONG_WEST_ST_65
+:Blk663C_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk663D_JURONG_WEST_ST_65
+:Blk663D_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk663E_JURONG_WEST_ST_64
+:Blk663E_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk663_JURONG_WEST_ST_65
+:Blk663_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk664A_JURONG_WEST_ST_64
+:Blk664A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk664B_JURONG_WEST_ST_64
+:Blk664B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk664C_JURONG_WEST_ST_64
+:Blk664C_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk664D_JURONG_WEST_ST_64
+:Blk664D_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk664E_JURONG_WEST_ST_64
+:Blk664E_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk664_JURONG_WEST_ST_64
+:Blk664_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk665A_JURONG_WEST_ST_64
+:Blk665A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk665B_JURONG_WEST_ST_64
+:Blk665B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk666A_JURONG_WEST_ST_65
+:Blk666A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk666B_JURONG_WEST_ST_65
+:Blk666B_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk667A_JURONG_WEST_ST_65
+:Blk667A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk667B_JURONG_WEST_ST_65
+:Blk667B_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk667C_JURONG_WEST_ST_65
+:Blk667C_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk667D_JURONG_WEST_ST_65
+:Blk667D_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk667E_JURONG_WEST_ST_65
+:Blk667E_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk667_JURONG_WEST_ST_65
+:Blk667_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk668A_JURONG_WEST_ST_64
+:Blk668A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk668B_JURONG_WEST_ST_64
+:Blk668B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk668C_JURONG_WEST_ST_64
+:Blk668C_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk668D_JURONG_WEST_ST_64
+:Blk668D_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk668E_JURONG_WEST_ST_64
+:Blk668E_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk669A_JURONG_WEST_ST_64
+:Blk669A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk669B_JURONG_WEST_ST_64
+:Blk669B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk669C_JURONG_WEST_ST_64
+:Blk669C_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk669D_JURONG_WEST_ST_64
+:Blk669D_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk669_JURONG_WEST_ST_64
+:Blk669_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk670A_JURONG_WEST_ST_65
+:Blk670A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk670_JURONG_WEST_ST_65
+:Blk670_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk671A_JURONG_WEST_ST_65
+:Blk671A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk671B_JURONG_WEST_ST_65
+:Blk671B_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk671C_JURONG_WEST_ST_65
+:Blk671C_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk672A_JURONG_WEST_ST_65
+:Blk672A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk672_JURONG_WEST_ST_65
+:Blk672_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk673A_JURONG_WEST_ST_65
+:Blk673A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk673B_JURONG_WEST_ST_65
+:Blk673B_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk673C_JURONG_WEST_ST_65
+:Blk673C_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk673_JURONG_WEST_ST_65
+:Blk673_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk674A_JURONG_WEST_ST_65
+:Blk674A_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk674B_JURONG_WEST_ST_65
+:Blk674B_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk674_JURONG_WEST_ST_65
+:Blk674_JURONG_WEST_ST_65 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk675A_JURONG_WEST_ST_64
+:Blk675A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk675B_JURONG_WEST_ST_64
+:Blk675B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk675_JURONG_WEST_ST_64
+:Blk675_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk676A_JURONG_WEST_ST_64
+:Blk676A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk676B_JURONG_WEST_ST_64
+:Blk676B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk676_JURONG_WEST_ST_64
+:Blk676_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk677A_JURONG_WEST_ST_64
+:Blk677A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk677B_JURONG_WEST_ST_64
+:Blk677B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk677C_JURONG_WEST_ST_64
+:Blk677C_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk677_JURONG_WEST_ST_64
+:Blk677_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk678A_JURONG_WEST_ST_64
+:Blk678A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk678B_JURONG_WEST_ST_64
+:Blk678B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk678C_JURONG_WEST_ST_64
+:Blk678C_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk678D_JURONG_WEST_ST_64
+:Blk678D_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk678_JURONG_WEST_ST_64
+:Blk678_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk679A_JURONG_WEST_CTRL_1
+:Blk679A_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk679B_JURONG_WEST_CTRL_1
+:Blk679B_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk679C_JURONG_WEST_CTRL_1
+:Blk679C_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk679_JURONG_WEST_CTRL_1
+:Blk679_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk680A_JURONG_WEST_CTRL_1
+:Blk680A_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk680B_JURONG_WEST_CTRL_1
+:Blk680B_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk680C_JURONG_WEST_CTRL_1
+:Blk680C_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk680_JURONG_WEST_CTRL_1
+:Blk680_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk681A_JURONG_WEST_CTRL_1
+:Blk681A_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk681B_JURONG_WEST_CTRL_1
+:Blk681B_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk681C_JURONG_WEST_CTRL_1
+:Blk681C_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk681_JURONG_WEST_CTRL_1
+:Blk681_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk682A_JURONG_WEST_CTRL_1
+:Blk682A_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk682B_JURONG_WEST_CTRL_1
+:Blk682B_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk682C_JURONG_WEST_CTRL_1
+:Blk682C_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk682_JURONG_WEST_CTRL_1
+:Blk682_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk683A_JURONG_WEST_CTRL_1
+:Blk683A_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk683B_JURONG_WEST_CTRL_1
+:Blk683B_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk683C_JURONG_WEST_ST_64
+:Blk683C_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk683_JURONG_WEST_CTRL_1
+:Blk683_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk684A_JURONG_WEST_ST_64
+:Blk684A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk684B_JURONG_WEST_ST_64
+:Blk684B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk684C_JURONG_WEST_ST_64
+:Blk684C_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk684_JURONG_WEST_ST_64
+:Blk684_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk685A_JURONG_WEST_ST_64
+:Blk685A_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk685B_JURONG_WEST_ST_64
+:Blk685B_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk685C_JURONG_WEST_CTRL_1
+:Blk685C_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk685_JURONG_WEST_ST_64
+:Blk685_JURONG_WEST_ST_64 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk686A_JURONG_WEST_CTRL_1
+:Blk686A_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk686B_JURONG_WEST_CTRL_1
+:Blk686B_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk686C_JURONG_WEST_CTRL_1
+:Blk686C_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk686_JURONG_WEST_CTRL_1
+:Blk686_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk687_JURONG_WEST_CTRL_1
+:Blk687_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk688_JURONG_WEST_CTRL_1
+:Blk688_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk689_JURONG_WEST_CTRL_1
+:Blk689_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk690_JURONG_WEST_CTRL_1
+:Blk690_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk691A_JURONG_WEST_CTRL_1
+:Blk691A_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk691_JURONG_WEST_CTRL_1
+:Blk691_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk692A_JURONG_WEST_CTRL_1
+:Blk692A_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk692_JURONG_WEST_CTRL_1
+:Blk692_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk693_JURONG_WEST_CTRL_1
+:Blk693_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk694_JURONG_WEST_CTRL_1
+:Blk694_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk695_JURONG_WEST_CTRL_1
+:Blk695_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk696_JURONG_WEST_CTRL_1
+:Blk696_JURONG_WEST_CTRL_1 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk697A_JURONG_WEST_CTRL_3
+:Blk697A_JURONG_WEST_CTRL_3 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk697B_JURONG_WEST_CTRL_3
+:Blk697B_JURONG_WEST_CTRL_3 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk697C_JURONG_WEST_CTRL_3
+:Blk697C_JURONG_WEST_CTRL_3 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk697_JURONG_WEST_CTRL_3
+:Blk697_JURONG_WEST_CTRL_3 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk698A_JURONG_WEST_CTRL_3
+:Blk698A_JURONG_WEST_CTRL_3 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk698B_JURONG_WEST_CTRL_3
+:Blk698B_JURONG_WEST_CTRL_3 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk698C_JURONG_WEST_CTRL_3
+:Blk698C_JURONG_WEST_CTRL_3 rdf:type owl:NamedIndividual ,
+                                     :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk698_JURONG_WEST_CTRL_3
+:Blk698_JURONG_WEST_CTRL_3 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk701_JURONG_WEST_ST_71
+:Blk701_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk702A_JURONG_WEST_ST_71
+:Blk702A_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk702_JURONG_WEST_ST_71
+:Blk702_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk703_JURONG_WEST_ST_71
+:Blk703_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk704_JURONG_WEST_ST_71
+:Blk704_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk705_JURONG_WEST_ST_71
+:Blk705_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk706_JURONG_WEST_ST_71
+:Blk706_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk707_JURONG_WEST_ST_71
+:Blk707_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk708_JURONG_WEST_ST_71
+:Blk708_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk709_JURONG_WEST_ST_71
+:Blk709_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk710_JURONG_WEST_ST_71
+:Blk710_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk711_JURONG_WEST_ST_71
+:Blk711_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk712A_JURONG_WEST_ST_71
+:Blk712A_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk712B_JURONG_WEST_ST_71
+:Blk712B_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk712_JURONG_WEST_ST_71
+:Blk712_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk713_JURONG_WEST_ST_71
+:Blk713_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk714_JURONG_WEST_ST_71
+:Blk714_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk715_JURONG_WEST_ST_71
+:Blk715_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk716_JURONG_WEST_ST_71
+:Blk716_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk717_JURONG_WEST_ST_71
+:Blk717_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk718_JURONG_WEST_ST_71
+:Blk718_JURONG_WEST_ST_71 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk719_JURONG_WEST_AVE_5
+:Blk719_JURONG_WEST_AVE_5 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk720_JURONG_WEST_AVE_5
+:Blk720_JURONG_WEST_AVE_5 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk721_JURONG_WEST_AVE_5
+:Blk721_JURONG_WEST_AVE_5 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk722_JURONG_WEST_AVE_5
+:Blk722_JURONG_WEST_AVE_5 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk723_JURONG_WEST_AVE_5
+:Blk723_JURONG_WEST_AVE_5 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk724_JURONG_WEST_ST_72
+:Blk724_JURONG_WEST_ST_72 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk725_JURONG_WEST_AVE_5
+:Blk725_JURONG_WEST_AVE_5 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk726_JURONG_WEST_AVE_5
+:Blk726_JURONG_WEST_AVE_5 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk727_JURONG_WEST_AVE_5
+:Blk727_JURONG_WEST_AVE_5 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk728_JURONG_WEST_AVE_5
+:Blk728_JURONG_WEST_AVE_5 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk729_JURONG_WEST_AVE_5
+:Blk729_JURONG_WEST_AVE_5 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk730_JURONG_WEST_ST_72
+:Blk730_JURONG_WEST_ST_72 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk731_JURONG_WEST_ST_72
+:Blk731_JURONG_WEST_ST_72 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk732_JURONG_WEST_ST_73
+:Blk732_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk733_JURONG_WEST_ST_73
+:Blk733_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk734A_JURONG_WEST_ST_73
+:Blk734A_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk734_JURONG_WEST_ST_73
+:Blk734_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk735_JURONG_WEST_ST_75
+:Blk735_JURONG_WEST_ST_75 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk736_JURONG_WEST_ST_75
+:Blk736_JURONG_WEST_ST_75 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk737_JURONG_WEST_ST_75
+:Blk737_JURONG_WEST_ST_75 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk738_JURONG_WEST_ST_75
+:Blk738_JURONG_WEST_ST_75 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk739A_JURONG_WEST_ST_73
+:Blk739A_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk739_JURONG_WEST_ST_73
+:Blk739_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk743_JURONG_WEST_ST_73
+:Blk743_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk744_JURONG_WEST_ST_73
+:Blk744_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk745_JURONG_WEST_ST_73
+:Blk745_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk746_JURONG_WEST_ST_73
+:Blk746_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk747_JURONG_WEST_ST_73
+:Blk747_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk748_JURONG_WEST_ST_73
+:Blk748_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk749_JURONG_WEST_ST_73
+:Blk749_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk750A_JURONG_WEST_ST_73
+:Blk750A_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk750_JURONG_WEST_ST_73
+:Blk750_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk751_JURONG_WEST_ST_73
+:Blk751_JURONG_WEST_ST_73 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk752_JURONG_WEST_ST_74
+:Blk752_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk753_JURONG_WEST_ST_74
+:Blk753_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk754_JURONG_WEST_ST_74
+:Blk754_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk755_JURONG_WEST_ST_74
+:Blk755_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk756_JURONG_WEST_ST_74
+:Blk756_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk757_JURONG_WEST_ST_74
+:Blk757_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk758_JURONG_WEST_ST_74
+:Blk758_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk759_JURONG_WEST_ST_74
+:Blk759_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk760A_JURONG_WEST_ST_74
+:Blk760A_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk760B_JURONG_WEST_ST_74
+:Blk760B_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk760_JURONG_WEST_ST_74
+:Blk760_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk761_JURONG_WEST_ST_74
+:Blk761_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk762A_JURONG_WEST_ST_75
+:Blk762A_JURONG_WEST_ST_75 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk762_JURONG_WEST_ST_75
+:Blk762_JURONG_WEST_ST_75 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk763_JURONG_WEST_ST_75
+:Blk763_JURONG_WEST_ST_75 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk764A_JURONG_WEST_ST_74
+:Blk764A_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk764_JURONG_WEST_ST_74
+:Blk764_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk765_JURONG_WEST_ST_74
+:Blk765_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk766_JURONG_WEST_ST_74
+:Blk766_JURONG_WEST_ST_74 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk810_JURONG_WEST_ST_81
+:Blk810_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk811A_JURONG_WEST_ST_81
+:Blk811A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk811_JURONG_WEST_ST_81
+:Blk811_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk812_JURONG_WEST_ST_81
+:Blk812_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk813_JURONG_WEST_ST_81
+:Blk813_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk814_JURONG_WEST_ST_81
+:Blk814_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk815_JURONG_WEST_ST_81
+:Blk815_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk816_JURONG_WEST_ST_81
+:Blk816_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk817_JURONG_WEST_ST_81
+:Blk817_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk818_JURONG_WEST_ST_81
+:Blk818_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk819_JURONG_WEST_ST_81
+:Blk819_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk820_JURONG_WEST_ST_81
+:Blk820_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk821A_JURONG_WEST_ST_81
+:Blk821A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk821_JURONG_WEST_ST_81
+:Blk821_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk822_JURONG_WEST_ST_81
+:Blk822_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk823_JURONG_WEST_ST_81
+:Blk823_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk824_JURONG_WEST_ST_81
+:Blk824_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk825_JURONG_WEST_ST_81
+:Blk825_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk826_JURONG_WEST_ST_81
+:Blk826_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk827_JURONG_WEST_ST_81
+:Blk827_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk828A_JURONG_WEST_ST_81
+:Blk828A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk828_JURONG_WEST_ST_81
+:Blk828_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk829_JURONG_WEST_ST_81
+:Blk829_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk830A_JURONG_WEST_ST_81
+:Blk830A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk830_JURONG_WEST_ST_81
+:Blk830_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk831A_JURONG_WEST_ST_81
+:Blk831A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk831_JURONG_WEST_ST_81
+:Blk831_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk832A_JURONG_WEST_ST_81
+:Blk832A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk832_JURONG_WEST_ST_81
+:Blk832_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk833_JURONG_WEST_ST_81
+:Blk833_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk834_JURONG_WEST_ST_81
+:Blk834_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk835_JURONG_WEST_ST_81
+:Blk835_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk836_JURONG_WEST_ST_81
+:Blk836_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk837A_JURONG_WEST_ST_81
+:Blk837A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk837_JURONG_WEST_ST_81
+:Blk837_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk838_JURONG_WEST_ST_81
+:Blk838_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk839_JURONG_WEST_ST_81
+:Blk839_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk840_JURONG_WEST_ST_81
+:Blk840_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk841A_JURONG_WEST_ST_81
+:Blk841A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk841_JURONG_WEST_ST_81
+:Blk841_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk842_JURONG_WEST_ST_81
+:Blk842_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk843_JURONG_WEST_ST_81
+:Blk843_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk844A_JURONG_WEST_ST_81
+:Blk844A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk844_JURONG_WEST_ST_81
+:Blk844_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk845_JURONG_WEST_ST_81
+:Blk845_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk846_JURONG_WEST_ST_81
+:Blk846_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk847_JURONG_WEST_ST_81
+:Blk847_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk848_JURONG_WEST_ST_81
+:Blk848_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk849_JURONG_WEST_ST_81
+:Blk849_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk850_JURONG_WEST_ST_81
+:Blk850_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk851_JURONG_WEST_ST_81
+:Blk851_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk852_JURONG_WEST_ST_81
+:Blk852_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk853_JURONG_WEST_ST_81
+:Blk853_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk854A_JURONG_WEST_ST_81
+:Blk854A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk854_JURONG_WEST_ST_81
+:Blk854_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk855A_JURONG_WEST_ST_81
+:Blk855A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk855_JURONG_WEST_ST_81
+:Blk855_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk856_JURONG_WEST_ST_81
+:Blk856_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk857_JURONG_WEST_ST_81
+:Blk857_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk858_JURONG_WEST_ST_81
+:Blk858_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk859A_JURONG_WEST_ST_81
+:Blk859A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk859_JURONG_WEST_ST_81
+:Blk859_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk860_JURONG_WEST_ST_81
+:Blk860_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk861_JURONG_WEST_ST_81
+:Blk861_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk862_JURONG_WEST_ST_81
+:Blk862_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk863_JURONG_WEST_ST_81
+:Blk863_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk864_JURONG_WEST_ST_81
+:Blk864_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk865A_JURONG_WEST_ST_81
+:Blk865A_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk865_JURONG_WEST_ST_81
+:Blk865_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk866_JURONG_WEST_ST_81
+:Blk866_JURONG_WEST_ST_81 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk901_JURONG_WEST_ST_91
+:Blk901_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk902_JURONG_WEST_ST_91
+:Blk902_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk903_JURONG_WEST_ST_91
+:Blk903_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk904_JURONG_WEST_ST_91
+:Blk904_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk905_JURONG_WEST_ST_91
+:Blk905_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk906_JURONG_WEST_ST_91
+:Blk906_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk907_JURONG_WEST_ST_91
+:Blk907_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk908_JURONG_WEST_ST_91
+:Blk908_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk909_JURONG_WEST_ST_91
+:Blk909_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk910_JURONG_WEST_ST_91
+:Blk910_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk911_JURONG_WEST_ST_91
+:Blk911_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk912_JURONG_WEST_ST_91
+:Blk912_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk913_JURONG_WEST_ST_91
+:Blk913_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk914_JURONG_WEST_ST_91
+:Blk914_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk915_JURONG_WEST_ST_91
+:Blk915_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk916_JURONG_WEST_ST_91
+:Blk916_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk917_JURONG_WEST_ST_91
+:Blk917_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk918_JURONG_WEST_ST_91
+:Blk918_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk919_JURONG_WEST_ST_91
+:Blk919_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk920_JURONG_WEST_ST_92
+:Blk920_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk921_JURONG_WEST_ST_92
+:Blk921_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk922_JURONG_WEST_ST_92
+:Blk922_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk923_JURONG_WEST_ST_92
+:Blk923_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk924_JURONG_WEST_ST_92
+:Blk924_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk925_JURONG_WEST_ST_92
+:Blk925_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk926_JURONG_WEST_ST_92
+:Blk926_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk928_JURONG_WEST_ST_92
+:Blk928_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk929_JURONG_WEST_ST_92
+:Blk929_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk930_JURONG_WEST_ST_92
+:Blk930_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk931_JURONG_WEST_ST_92
+:Blk931_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk932_JURONG_WEST_ST_92
+:Blk932_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk933_JURONG_WEST_ST_91
+:Blk933_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk934_JURONG_WEST_ST_91
+:Blk934_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk935_JURONG_WEST_ST_91
+:Blk935_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk936_JURONG_WEST_ST_91
+:Blk936_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk937_JURONG_WEST_ST_91
+:Blk937_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk938_JURONG_WEST_ST_91
+:Blk938_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk939_JURONG_WEST_ST_91
+:Blk939_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk940_JURONG_WEST_ST_91
+:Blk940_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk941_JURONG_WEST_ST_91
+:Blk941_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk942_JURONG_WEST_ST_91
+:Blk942_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk943_JURONG_WEST_ST_91
+:Blk943_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk944_JURONG_WEST_ST_91
+:Blk944_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk945_JURONG_WEST_ST_91
+:Blk945_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk946_JURONG_WEST_ST_91
+:Blk946_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk947_JURONG_WEST_ST_91
+:Blk947_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk948_JURONG_WEST_ST_91
+:Blk948_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk949_JURONG_WEST_ST_91
+:Blk949_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk950_JURONG_WEST_ST_91
+:Blk950_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk952_JURONG_WEST_ST_91
+:Blk952_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk953_JURONG_WEST_ST_91
+:Blk953_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk959_JURONG_WEST_ST_92
+:Blk959_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk960_JURONG_WEST_ST_92
+:Blk960_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk961_JURONG_WEST_ST_92
+:Blk961_JURONG_WEST_ST_92 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk962A_JURONG_WEST_ST_91
+:Blk962A_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk962_JURONG_WEST_ST_91
+:Blk962_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk963_JURONG_WEST_ST_91
+:Blk963_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk964_JURONG_WEST_ST_91
+:Blk964_JURONG_WEST_ST_91 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk965_JURONG_WEST_ST_93
+:Blk965_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk966_JURONG_WEST_ST_93
+:Blk966_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk967A_JURONG_WEST_ST_93
+:Blk967A_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk967B_JURONG_WEST_ST_93
+:Blk967B_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk967_JURONG_WEST_ST_93
+:Blk967_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk968_JURONG_WEST_ST_93
+:Blk968_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk974_JURONG_WEST_ST_93
+:Blk974_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk975_JURONG_WEST_ST_93
+:Blk975_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk976_JURONG_WEST_ST_93
+:Blk976_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk977_JURONG_WEST_ST_93
+:Blk977_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk978_JURONG_WEST_ST_93
+:Blk978_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk979_JURONG_WEST_ST_93
+:Blk979_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk980_JURONG_WEST_ST_93
+:Blk980_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk986A_JURONG_WEST_ST_93
+:Blk986A_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk986B_JURONG_WEST_ST_93
+:Blk986B_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk986C_JURONG_WEST_ST_93
+:Blk986C_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk986_JURONG_WEST_ST_93
+:Blk986_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk987A_JURONG_WEST_ST_93
+:Blk987A_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk987B_JURONG_WEST_ST_93
+:Blk987B_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk987C_JURONG_WEST_ST_93
+:Blk987C_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk987D_JURONG_WEST_ST_93
+:Blk987D_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk987_JURONG_WEST_ST_93
+:Blk987_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk988A_JURONG_WEST_ST_93
+:Blk988A_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk988B_JURONG_WEST_ST_93
+:Blk988B_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk988C_JURONG_WEST_ST_93
+:Blk988C_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk988_JURONG_WEST_ST_93
+:Blk988_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk989A_JURONG_WEST_ST_93
+:Blk989A_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk989B_JURONG_WEST_ST_93
+:Blk989B_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk989C_JURONG_WEST_ST_93
+:Blk989C_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk989D_JURONG_WEST_ST_93
+:Blk989D_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk990A_JURONG_WEST_ST_93
+:Blk990A_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk990B_JURONG_WEST_ST_93
+:Blk990B_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk990C_JURONG_WEST_ST_93
+:Blk990C_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                    :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Blk990_JURONG_WEST_ST_93
+:Blk990_JURONG_WEST_ST_93 rdf:type owl:NamedIndividual ,
+                                   :HDB_block .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC10_DT26
+:CC10_DT26 rdf:type owl:NamedIndividual ,
+                    :MRT_station ;
+           :label_cn "麦波申" ;
+           rdfs:label "MacPherson" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC11
+:CC11 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "大成" ;
+      rdfs:label "Tai Seng" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC12
+:CC12 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "巴特礼" ;
+      rdfs:label "Bartley" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC13_NE12
+:CC13_NE12 rdf:type owl:NamedIndividual ,
+                    :MRT_station ;
+           :label_cn "实龙岗" ;
+           rdfs:label "Serangoon" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC14
+:CC14 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "罗弄泉" ;
+      rdfs:label "Lorong Chuan" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC15_NS17
+:CC15_NS17 rdf:type owl:NamedIndividual ,
+                    :MRT_station ;
+           :label_cn "碧山" ;
+           rdfs:label "Bishan" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC16
+:CC16 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "玛丽蒙" ;
+      rdfs:label "Marymount" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC17
+:CC17 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "加利谷" ;
+      rdfs:label "Caldecott" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC19_DT9
+:CC19_DT9 rdf:type owl:NamedIndividual ,
+                   :MRT_station ;
+          :label_cn "植物园" ;
+          rdfs:label "Botanic Gardens • Kebun Bunga" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC1_NE6_NS24
+:CC1_NE6_NS24 rdf:type owl:NamedIndividual ,
+                       :MRT_station ;
+              :label_cn "多美歌" ;
+              rdfs:label "Dhoby Ghaut" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC2
+:CC2 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "百胜" ;
+     rdfs:label "Bras Basah" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC20
+:CC20 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "花拉路" ;
+      rdfs:label "Farrer Road" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC21
+:CC21 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "荷兰村" ;
+      rdfs:label "Holland Village" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC22_EW21
+:CC22_EW21 rdf:type owl:NamedIndividual ,
+                    :MRT_station ;
+           :label_cn "波那维斯达" ;
+           rdfs:label "Buona Vista" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC23
+:CC23 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "纬壹" ;
+      rdfs:label "one-north" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC24
+:CC24 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "肯特岗" ;
+      rdfs:label "Kent Ridge" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC25
+:CC25 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "虎豹别墅" ;
+      rdfs:label "Haw Par Villa" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC26
+:CC26 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "巴西班让" ;
+      rdfs:label "Pasir Panjang" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC27
+:CC27 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "拉柏多公园" ;
+      rdfs:label "Labrador Park" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC28
+:CC28 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "直落布兰雅" ;
+      rdfs:label "Telok Blangah" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC29_NE1
+:CC29_NE1 rdf:type owl:NamedIndividual ,
+                   :MRT_station ;
+          :label_cn "港湾" ;
+          rdfs:label "HarbourFront" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC3
+:CC3 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "滨海中心" ;
+     rdfs:label "Esplanade" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC4_DT15
+:CC4_DT15 rdf:type owl:NamedIndividual ,
+                   :MRT_station ;
+          :label_cn "宝门廊" ;
+          rdfs:label "Promenade" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC5
+:CC5 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "尼诰大道" ;
+     rdfs:label "Nicoll Highway" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC6
+:CC6 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "体育场" ;
+     rdfs:label "Stadium" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC7
+:CC7 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "蒙巴登" ;
+     rdfs:label "Mountbatten" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC8
+:CC8 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "达科达" ;
+     rdfs:label "Dakota" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CC9_EW8
+:CC9_EW8 rdf:type owl:NamedIndividual ,
+                  :MRT_station ;
+         :label_cn "巴耶利峇" ;
+         rdfs:label "Paya Lebar" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CE1_DT16
+:CE1_DT16 rdf:type owl:NamedIndividual ,
+                   :MRT_station ;
+          :label_cn "海湾舫" ;
+          rdfs:label "Bayfront" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CE2_NS27
+:CE2_NS27 rdf:type owl:NamedIndividual ,
+                   :MRT_station ;
+          :label_cn "滨海湾" ;
+          rdfs:label "Marina Bay" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CG1_DT35
+:CG1_DT35 rdf:type owl:NamedIndividual ,
+                   :MRT_station ;
+          :label_cn "博览" ;
+          rdfs:label "Expo" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/CG2
+:CG2 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "樟宜机场" ;
+     rdfs:label "Changi Airport" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT1
+:DT1 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "武吉班让" ;
+     rdfs:label "Bukit Panjang" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT10
+:DT10 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "史蒂芬" ;
+      rdfs:label "Stevens" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT11_NS21
+:DT11_NS21 rdf:type owl:NamedIndividual ,
+                    :MRT_station ;
+           :label_cn "纽顿" ;
+           rdfs:label "Newton" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT12_NE7
+:DT12_NE7 rdf:type owl:NamedIndividual ,
+                   :MRT_station ;
+          :label_cn "小印度" ;
+          rdfs:label "Little India" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT13
+:DT13 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "梧槽" ;
+      rdfs:label "Rochor" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT14_EW12
+:DT14_EW12 rdf:type owl:NamedIndividual ,
+                    :MRT_station ;
+           :label_cn "武吉士" ;
+           rdfs:label "Bugis" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT17
+:DT17 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "市中心" ;
+      rdfs:label "Downtown" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT18
+:DT18 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "直落亚逸" ;
+      rdfs:label "Telok Ayer" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT19_NE4
+:DT19_NE4 rdf:type owl:NamedIndividual ,
+                   :MRT_station ;
+          :label_cn "牛车水" ;
+          rdfs:label "Chinatown" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT2
+:DT2 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "凯秀" ;
+     rdfs:label "Cashew" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT20
+:DT20 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "福康宁" ;
+      rdfs:label "Fort Canning" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT21
+:DT21 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "明古连" ;
+      rdfs:label "Bencoolen" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT22
+:DT22 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "惹兰勿刹" ;
+      rdfs:label "Jalan Besar" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT23
+:DT23 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "明地迷亚" ;
+      rdfs:label "Bendemeer" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT24
+:DT24 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "芽笼峇鲁" ;
+      rdfs:label "Geylang Bahru" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT25
+:DT25 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "玛达" ;
+      rdfs:label "Mattar" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT27
+:DT27 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "乌美" ;
+      rdfs:label "Ubi" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT28
+:DT28 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "加基武吉" ;
+      rdfs:label "Kaki Bukit" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT29
+:DT29 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "勿洛北" ;
+      rdfs:label "Bedok North" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT3
+:DT3 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "山景" ;
+     rdfs:label "Hillview" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT30
+:DT30 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "勿洛蓄水池" ;
+      rdfs:label "Bedok Reservoir" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT31
+:DT31 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "淡滨尼西" ;
+      rdfs:label "Tampines West" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT32_EW2
+:DT32_EW2 rdf:type owl:NamedIndividual ,
+                   :MRT_station ;
+          :label_cn "淡滨尼" ;
+          rdfs:label "Tampines" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT33
+:DT33 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "淡滨尼东" ;
+      rdfs:label "Tampines East" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT34
+:DT34 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "樟宜上段" ;
+      rdfs:label "Upper Changi" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT5
+:DT5 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "美世界" ;
+     rdfs:label "Beauty World" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT6
+:DT6 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "阿尔柏王园" ;
+     rdfs:label "King Albert Park" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT7
+:DT7 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "第六道" ;
+     rdfs:label "Sixth Avenue" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/DT8
+:DT8 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "陈嘉庚" ;
+     rdfs:label "Tan Kah Kee" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW1
+:EW1 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "巴西立" ;
+     rdfs:label "Pasir Ris" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW10
+:EW10 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "加冷" ;
+      rdfs:label "Kallang" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW11
+:EW11 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "劳明达" ;
+      rdfs:label "Lavender" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW13_NS25
+:EW13_NS25 rdf:type owl:NamedIndividual ,
+                    :MRT_station ;
+           :label_cn "政府大厦" ;
+           rdfs:label "City Hall" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW14_NS26
+:EW14_NS26 rdf:type owl:NamedIndividual ,
+                    :MRT_station ;
+           :label_cn "莱佛士坊" ;
+           rdfs:label "Raffles Place" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW15
+:EW15 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "丹戎巴葛" ;
+      rdfs:label "Tanjong Pagar" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW16_NE3
+:EW16_NE3 rdf:type owl:NamedIndividual ,
+                   :MRT_station ;
+          :label_cn "欧南园" ;
+          rdfs:label "Outram Park" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW17
+:EW17 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "中峇鲁" ;
+      rdfs:label "Tiong Bahru" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW18
+:EW18 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "红山" ;
+      rdfs:label "Redhill" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW19
+:EW19 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "女皇镇" ;
+      rdfs:label "Queenstown" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW20
+:EW20 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "联邦" ;
+      rdfs:label "Commonwealth" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW22
+:EW22 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "杜弗" ;
+      rdfs:label "Dover" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW23
+:EW23 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "金文泰" ;
+      rdfs:label "Clementi" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW24_NS1
+:EW24_NS1 rdf:type owl:NamedIndividual ,
+                   :MRT_station ;
+          :label_cn "裕廊东" ;
+          rdfs:label "Jurong East" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW25
+:EW25 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "裕华园" ;
+      rdfs:label "Chinese Garden" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW26
+:EW26 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "湖畔" ;
+      rdfs:label "Lakeside" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW27
+:EW27 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "文礼" ;
+      rdfs:label "Boon Lay" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW28
+:EW28 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "先驱" ;
+      rdfs:label "Pioneer" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW29
+:EW29 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "裕群" ;
+      rdfs:label "Joo Koon" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW3
+:EW3 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "四美" ;
+     rdfs:label "Simei" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW30
+:EW30 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "卡尔圈" ;
+      rdfs:label "Gul Circle" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW31
+:EW31 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "大士弯" ;
+      rdfs:label "Tuas Crescent" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW32
+:EW32 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "大士西路" ;
+      rdfs:label "Tuas West Road" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW33
+:EW33 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "大士连路" ;
+      rdfs:label "Tuas Link" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW4
+:EW4 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "丹那美拉" ;
+     rdfs:label "Tanah Merah" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW5
+:EW5 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "勿洛" ;
+     rdfs:label "Bedok" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW6
+:EW6 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "景万岸" ;
+     rdfs:label "Kembangan" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW7
+:EW7 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "友诺士" ;
+     rdfs:label "Eunos" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/EW9
+:EW9 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "阿裕尼" ;
+     rdfs:label "Aljunied" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Listing1999
+:Listing1999 rdf:type owl:NamedIndividual ,
+                      :Listing ;
+             :floorSize _:genid2 ;
+             :property_unit :Blk271_JURONG_WEST_ST_24_Apt04-55 ;
+             :rental_unit [ rdf:type rental:Master_bedroom
+                          ] ;
+             :address "Blk271, JURONG WEST ST 24, Apt04-55" ;
+             :pet_friendly "Yes" ;
+             :postcode "641271" ;
+             :rental_monthly "1100 SGD" .
+
+_:genid2 rdf:type :Unit_Value ;
+          :unit :SqFt ;
+          :value 150 .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/Listing2001
+:Listing2001 rdf:type owl:NamedIndividual ,
+                      :Listing ;
+             :floorSize _:genid4 ;
+             :property_unit :Blk423_JURONG_WEST_AVE_1_Apt03-11 ;
+             :rental_unit [ rdf:type rental:Master_bedroom
+                          ] ;
+             :address "Blk423, JURONG WEST AVE 1, Apt03-11" ;
+             :pet_friendly "No" ;
+             :postcode "640423" ;
+             :rental_monthly "1400 SGD" .
+
+_:genid4 rdf:type :Unit_Value ;
+          :unit :SqFt ;
+          :value 200 .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NE10
+:NE10 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "波东巴西" ;
+      rdfs:label "Potong Pasir" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NE11
+:NE11 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "兀里" ;
+      rdfs:label "Woodleigh" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NE13
+:NE13 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "高文" ;
+      rdfs:label "Kovan" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NE14
+:NE14 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "后港" ;
+      rdfs:label "Hougang" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NE15
+:NE15 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "万国" ;
+      rdfs:label "Buangkok" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NE16
+:NE16 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "盛港" ;
+      rdfs:label "Sengkang" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NE17
+:NE17 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "榜鹅" ;
+      rdfs:label "Punggol" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NE5
+:NE5 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "克拉码头" ;
+     rdfs:label "Clarke Quay" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NE8
+:NE8 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "花拉公园" ;
+     rdfs:label "Farrer Park" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NE9
+:NE9 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "文庆" ;
+     rdfs:label "Boon Keng" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS10
+:NS10 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "海军部" ;
+      rdfs:label "Admiralty" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS11
+:NS11 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "三巴旺" ;
+      rdfs:label "Sembawang" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS13
+:NS13 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "义顺" ;
+      rdfs:label "Yishun" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS14
+:NS14 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "卡迪" ;
+      rdfs:label "Khatib" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS15
+:NS15 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "杨厝港" ;
+      rdfs:label "Yio Chu Kang" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS16
+:NS16 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "宏茂桥" ;
+      rdfs:label "Ang Mo Kio" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS18
+:NS18 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "布莱德" ;
+      rdfs:label "Braddell" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS19
+:NS19 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "大巴窑" ;
+      rdfs:label "Toa Payoh" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS2
+:NS2 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "武吉巴督" ;
+     rdfs:label "Bukit Batok" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS20
+:NS20 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "诺维娜" ;
+      rdfs:label "Novena" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS22
+:NS22 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "乌节" ;
+      rdfs:label "Orchard" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS23
+:NS23 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "索美塞" ;
+      rdfs:label "Somerset" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS28
+:NS28 rdf:type owl:NamedIndividual ,
+               :MRT_station ;
+      :label_cn "滨海南码头" ;
+      rdfs:label "Marina South Pier" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS3
+:NS3 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "武吉甘柏" ;
+     rdfs:label "Bukit Gombak" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS4
+:NS4 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "蔡厝港" ;
+     rdfs:label "Choa Chu Kang" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS5
+:NS5 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "油池" ;
+     rdfs:label "Yew Tee" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS7
+:NS7 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "克兰芝" ;
+     rdfs:label "Kranji" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS8
+:NS8 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "马西岭" ;
+     rdfs:label "Marsiling" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/NS9
+:NS9 rdf:type owl:NamedIndividual ,
+              :MRT_station ;
+     :label_cn "兀兰" ;
+     rdfs:label "Woodlands" .
+
+
+###  http://wkwsci.ntu.edu.sg/CZTLZW/rental#/SqFt
+:SqFt rdf:type owl:NamedIndividual ,
+               :UnitOfMeasure .
+
+
+[ rdf:type 1100
+] .
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
+
+
+
+
+
+
+
